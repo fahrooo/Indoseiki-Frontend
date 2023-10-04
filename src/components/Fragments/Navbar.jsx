@@ -7,6 +7,12 @@ const Navbar = () => {
   const location = useLocation();
   const profile = useLogin();
 
+  const handleLogout = () => {
+    localStorage.removeItem("data");
+
+    window.location.href = "/";
+  };
+
   const menus = [
     {
       title: "Home",
@@ -48,7 +54,12 @@ const Navbar = () => {
 
           <div className="text-end d-flex align-items-center">
             <h6 className="mt-1">{profile.name}</h6>
-            <Button type="button" variant="danger" className="ms-4">
+            <Button
+              type="button"
+              variant="danger"
+              className="ms-4"
+              onClick={handleLogout}
+            >
               Logout
             </Button>
           </div>
