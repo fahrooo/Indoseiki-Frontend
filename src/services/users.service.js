@@ -23,7 +23,7 @@ export const putUsers = (id, data, callback) => {
 
 export const deleteUsers = (id, callback) => {
   axios
-    .delete(`http://localhost:5000/users/update/${id}`)
+    .delete(`http://localhost:5000/users/delete/${id}`)
     .then((res) => callback(res.data))
     .catch((err) => callback(err));
 };
