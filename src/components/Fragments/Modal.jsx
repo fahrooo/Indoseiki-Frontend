@@ -8,6 +8,7 @@ const ModalShow = ({
   handleSubmit,
   title,
   titleButton,
+  color = "primary"
 }) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
@@ -17,7 +18,7 @@ const ModalShow = ({
       <Form onSubmit={handleSubmit}>
         <Modal.Body className="px-5">{children}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" type="submit">
+          <Button variant={color} type="submit">
             {titleButton}
           </Button>
         </Modal.Footer>
