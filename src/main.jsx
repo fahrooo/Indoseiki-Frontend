@@ -5,11 +5,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import LoginPage from "./pages/login";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Halo</div>,
+    element: <LoginPage />,
   },
 ]);
 
