@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
 import NavItem from "../Elements/NavItem";
 import { useLocation } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
 
 const Navbar = () => {
   const location = useLocation();
+  const profile = useLogin();
 
   const menus = [
     {
@@ -45,7 +47,7 @@ const Navbar = () => {
           </ul>
 
           <div className="text-end d-flex align-items-center">
-            <h6 className="mt-1">Fahro Nur Fauzi</h6>
+            <h6 className="mt-1">{profile.name}</h6>
             <Button type="button" variant="danger" className="ms-4">
               Logout
             </Button>
