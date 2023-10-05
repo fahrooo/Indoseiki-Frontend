@@ -27,7 +27,11 @@ const UsersPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleShowTambah = () => setShowTambah(true);
+  const handleShowTambah = () => {
+    setName("");
+    setEmail("");
+    setShowTambah(true);
+  };
   const handleCloseTambah = () => setShowTambah(false);
 
   const handleShowEdit = (id) => {
@@ -124,7 +128,6 @@ const UsersPage = () => {
         setMessageToast("Data User Berhasil Dihapus!");
         toggleShowToast();
         handleCloseDelete();
-        setPassword("");
         setTimeout(() => {
           setShowToast(false);
         }, 3000);
@@ -166,7 +169,10 @@ const UsersPage = () => {
           {messageToast}
         </ToastShow>
         {users == undefined && (
-          <div className="d-flex justify-content-center align-items-center" style={{height: "400px"}}>
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ height: "400px" }}
+          >
             <h4>Data Not Found</h4>
           </div>
         )}
