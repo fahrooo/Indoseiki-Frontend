@@ -17,6 +17,7 @@ import Form from "react-bootstrap/Form";
 
 import "react-datepicker/dist/react-datepicker.css";
 import ExcelExport from "../Export/ExcelExport";
+import { postUpload } from "../services/upload.service";
 
 const CustomDate = forwardRef(({ value, onClick }, ref) => (
   <button
@@ -47,6 +48,7 @@ const BookPage = () => {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [author, setAuhtor] = useState("");
+  const [image, setImage] = useState("");
 
   const handleShowTambah = () => {
     setTitle("");
@@ -81,14 +83,31 @@ const BookPage = () => {
   const handleSubmitTambah = (e) => {
     e.preventDefault();
 
+    const currentDate = new Date();
+
+    // Get the year, month, and day components
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so add 1
+    const day = String(currentDate.getDate()).padStart(2, "0");
+
+    // Create the "yyyy-mm-dd" formatted string
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const nameFIle = formattedDate + "-" + image.name;
+
+    const formData = new FormData();
+    formData.append("file", image);
+
     const data = {
       title,
       genre,
       author,
       year: startDate.getFullYear(),
       isAvailable: true,
-      image: "cover-book.png",
+      image: nameFIle,
     };
+
+    postUpload(formData);
 
     postBook(data, (res) => {
       if (res.status === 200) {
@@ -182,6 +201,8 @@ const BookPage = () => {
     { value: "", text: "All" },
     { value: "Action", text: "Action" },
     { value: "Comedy", text: "Comedy" },
+    { value: "Drama", text: "Drama" },
+    { value: "Fantasy", text: "Fantasy" },
     { value: "Horror", text: "Horror" },
     { value: "Romance", text: "Romance" },
   ];
@@ -311,6 +332,16 @@ const BookPage = () => {
                 name="year"
               />
             </div>
+          </Form.Group>
+          <Form.Group controlId="formImage" className="mb-3">
+            <Form.Label className="fw-semibold">Upload Image</Form.Label>
+            <Form.Control
+              type="file"
+              name="file"
+              accept="image/png, image/gif, image/jpeg, image/jpg"
+              onChange={(e) => setImage(e.target.files[0])}
+              required
+            />
           </Form.Group>
         </ModalShow>
         <ModalShow
