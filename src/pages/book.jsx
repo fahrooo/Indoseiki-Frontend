@@ -32,7 +32,7 @@ const CustomDate = forwardRef(({ value, onClick }, ref) => (
 CustomDate.displayName = "customDate";
 
 const BookPage = () => {
-  const [book, seBook] = useState([]);
+  const [book, setBook] = useState([]);
   const [showTambah, setShowTambah] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -86,7 +86,7 @@ const BookPage = () => {
       author,
       year: startDate.getFullYear(),
       isAvailable: true,
-      image: "test.jpg",
+      image: "cover-book.png",
     };
 
     postBook(data, (res) => {
@@ -173,7 +173,7 @@ const BookPage = () => {
 
   useEffect(() => {
     getBook((res) => {
-      seBook(res.data);
+      setBook(res.data);
     });
   }, [showToast]);
 
