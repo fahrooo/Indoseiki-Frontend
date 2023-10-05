@@ -16,6 +16,7 @@ import DatePicker from "react-datepicker";
 import Form from "react-bootstrap/Form";
 
 import "react-datepicker/dist/react-datepicker.css";
+import ExcelExport from "../Export/ExcelExport";
 
 const CustomDate = forwardRef(({ value, onClick }, ref) => (
   <button
@@ -190,7 +191,8 @@ const BookPage = () => {
       <Navbar />
       <div style={{ padding: "50px 200px" }}>
         <h2>Data Book</h2>
-        <div className="d-flex justify-content-end mb-2">
+        <div className="d-flex justify-content-end mb-2 gap-2">
+          <ExcelExport excelData={book} fileName="List Book" />
           <Button variant="success" type="button" onClick={handleShowTambah}>
             Tambah
           </Button>
