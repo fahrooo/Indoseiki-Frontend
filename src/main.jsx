@@ -8,6 +8,7 @@ import LoginPage from "./pages/login";
 import UsersPage from "./pages/users";
 import BookPage from "./pages/book";
 import HomePage from "./pages/home";
+import HistoryPage from "./pages/history";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/book",
     element: <BookPage />,
+  },
+  {
+    path: "/history",
+    element: <HistoryPage />,
   },
 ]);
 
