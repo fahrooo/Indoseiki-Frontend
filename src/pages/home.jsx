@@ -76,7 +76,7 @@ const HomePage = () => {
         >
           {messageToast}
         </ToastShow>
-        <h2 className="text-center mb-5">Please Borrow Your Book</h2>
+        <h2 className="text-center mb-3">Choose Your Favorite Book</h2>
         <Container>
           {book == undefined && (
             <div
@@ -94,11 +94,12 @@ const HomePage = () => {
                     key={index}
                     className="d-flex flex-wrap justify-content-center align-items-center rounded p-1"
                   >
-                    <div className="p-3 bg-dark text-white rounded">
+                    <div className="p-3 bg-dark text-white rounded d-flex flex-column w-100 justify-content-center">
                       <Image
                         src={`http://localhost:5000/images/${item.image}`}
                         thumbnail
-                        className="object-fit-fill border rounded"
+                        className="object-fit-cover border rounded w-100"
+                        style={{ height: "280px" }}
                         alt="cover-book"
                       />
                       <div
