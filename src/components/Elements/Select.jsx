@@ -14,7 +14,7 @@ const Select = (props) => {
         }}
         required
       >
-        <option disabled selected value="">
+        <option disabled value="">
           {placeholder}
         </option>
         {data
