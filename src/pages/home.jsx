@@ -96,7 +96,7 @@ const HomePage = () => {
                   >
                     <div className="p-3 bg-dark text-white rounded">
                       <Image
-                        src={`images/${item.image}`}
+                        src={`http://localhost:5000/images/${item.image}`}
                         thumbnail
                         className="object-fit-fill border rounded"
                         alt="cover-book"
