@@ -28,7 +28,7 @@ const LoginPage = () => {
 
   return (
     <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
-      {login && <Navigate to="/users" replace={true} />}
+      {login && <Navigate to="/home" replace={true} />}
       <div
         className="shadow-lg p-5 bg-white rounded rounded-3"
         style={{ width: "370px" }}
